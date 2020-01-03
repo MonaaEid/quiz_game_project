@@ -10,38 +10,65 @@ const counter = document.getElementById("counter");
 const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
-var audio = new Audio('');
+const song= document.getElementById("song");
 // create our questions
 let questions = [
     {
-        question : " ",
+        question : "in which country pyramids are located",
+        imgSrc : "egypt.jpg",
+        choiceA : "Egypt",
+        choiceB : "Sudan",
+        choiceC : "lebanon",
+        correct : "A"
+    },{  
+        question : "look like in Euorpe! ",
         imgSrc : "london.jpg",
         choiceA : "Germany",
         choiceB : "England",
         choiceC : "switzerland",
         correct : "B"
     },{
-        question : "guess what?",
+        question : "guess where!",
         imgSrc : "milan(italy).jpg",
         choiceA : "Greece",
         choiceB : "Italy",
         choiceC : "Sweden",
         correct : "B"
     },{
-        question : " ",
+        question : "how many years can penguin live?",
+        imgSrc : "baby-penguins.jpg",
+        choiceA : "up to 20",
+        choiceB : "up to 25",
+        choiceC : "up to 30",
+        correct : "C"
+    },{
+        question : " mmmm!",
         imgSrc : "germany(tubingen).jpg",
         choiceA : "Germany",
         choiceB : "United states",
         choiceC : "Kanda",
         correct : "A"
     },{
-        question : " ",
+        question : "in which country?",
         imgSrc : "taj-mahel.jpg",
         choiceA : "Jordan",
         choiceB : "Turky",
         choiceC : "India",
         correct : "C"
-
+    },{
+        question : "In which year did princess Diana die? " ,
+        imgSrc : "diana.jpg",
+        choiceA : "1955",
+        choiceB : "1997",
+        choiceC : "1999",
+        correct : "B"
+    },{
+        question : "Which city has the best coffee in the world?",
+        imgSrc : "coffee.jpg",
+        choiceA : "london",
+        choiceB : "New Zealand",
+        choiceC : "Vienna",
+        correct : "A"
     }
 ];
 
@@ -136,7 +163,7 @@ function checkAnswer(answer){
 // answer is correct
 function answerIsCorrect(){
     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
-   audio.play();
+  
 }
 
 // answer is Wrong
@@ -147,6 +174,7 @@ function answerIsWrong(){
 // score render
 function scoreRender(){
     scoreDiv.style.display = "block";
+    
     
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score/questions.length);
@@ -160,6 +188,8 @@ function scoreRender(){
     
     scoreDiv.innerHTML = "<img src="+ img +">";
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+    if(scorePerCent >= 75)
+    song.play();
 }
 
 
